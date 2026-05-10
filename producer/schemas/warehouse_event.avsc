@@ -1,0 +1,35 @@
+{
+  "type": "record",
+  "name": "WarehouseEvent",
+  "namespace": "com.warehouse",
+  "fields": [
+    {"name": "event_id", "type": "string"},
+    {"name": "event_type", "type": "string"},
+    {"name": "timestamp", "type": "long"},
+    {"name": "product_id", "type": "string"},
+    {"name": "zone_id", "type": ["null", "string"], "default": null},
+    {"name": "target_zone_id", "type": ["null", "string"], "default": null},
+    {"name": "quantity", "type": "int"},
+    {"name": "order_id", "type": ["null", "string"], "default": null},
+    {"name": "sku", "type": ["null", "string"], "default": null},
+    {
+      "name": "order_items",
+      "type": [
+        "null",
+        {
+          "type": "array",
+          "items": {
+            "type": "record",
+            "name": "OrderItem",
+            "fields": [
+              {"name": "product_id", "type": "string"},
+              {"name": "zone_id", "type": "string"},
+              {"name": "quantity", "type": "int"}
+            ]
+          }
+        }
+      ],
+      "default": null
+    }
+  ]
+}
